@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -7,9 +7,9 @@ function Header() {
         #VANLIFE
       </Link>
       <nav>
-        <Link to="host">Host</Link>
-        <Link to="about">About</Link>
-        <Link to="vans">Vans</Link>
+        <NavLink to="host">Host</NavLink>
+        <NavLink to="about">About</NavLink>
+        <NavLink to="vans">Vans</NavLink>
       </nav>
     </header>
   );
