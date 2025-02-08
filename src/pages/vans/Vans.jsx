@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import VanCard from "../../Components/VanCard";
+import { useEffect, useState } from "react";
 
 function Vans() {
   const [vans, setVans] = useState([]);
@@ -8,7 +8,7 @@ function Vans() {
     async function fetchData() {
       const data = await fetch("/api/vans");
       const vansData = await data.json();
-      setVans(vansData.vans);
+      setVans([...vansData.vans]);
     }
     fetchData();
   }, []);
