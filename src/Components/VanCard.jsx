@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 
-function VanCard({ van }) {
+function VanCard({ van, searchParams, typeFilter }) {
   return (
     <div key={van.id} className="van-tile">
       <Link
         to={`/vans/${van.id}`}
+        state={{ search: `?${searchParams.toString()}`, type: typeFilter }}
         aria-label={`View details for ${van.name}, 
                             priced at $${van.price} per day`}
       >
