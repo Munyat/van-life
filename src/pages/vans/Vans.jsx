@@ -1,13 +1,15 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLoaderData } from "react-router-dom";
+import { useState } from "react";
 import VanCard from "../../Components/VanCard";
-import { useEffect, useState } from "react";
 import { getVans } from "../../hooks/useVansFetch";
+
+export function loader() {
+  return getVans();
+}
 
 function Vans() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [vans, setVans] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const vans = useLoaderData();
 
   const typeFilter = searchParams.get("type");
 
@@ -26,29 +28,13 @@ function Vans() {
     });
   }
 
-  useEffect(() => {
-    async function loadVans() {
-      setLoading(true);
-      try {
-        const data = await getVans();
-        setVans(data);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    }
+  // if (loading) {
+  //   return <h1 aria-live="polite">Loading...</h1>;
+  // }
 
-    loadVans();
-  }, []);
-
-  if (loading) {
-    return <h1 aria-live="polite">Loading...</h1>;
-  }
-
-  if (error) {
-    return <h1 aria-live="assertive">There was an error: {error.message}</h1>;
-  }
+  // if (error) {
+  //   return <h1 aria-live="assertive">There was an error: {error.message}</h1>;
+  // }
   return (
     <div className="van-list-container">
       <h1>Explore our van options</h1>
