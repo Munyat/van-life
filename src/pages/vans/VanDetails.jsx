@@ -1,23 +1,16 @@
-import { useParams, Link, useLocation } from "react-router-dom";
+import { useParams, Link, useLocation, useLoaderData } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getVans } from "../../hooks/useVansFetch";
+
+export function loader({ params }) {
+  return getVans(params.id);
+}
 
 function VanDetails() {
-  const params = useParams();
-  const [van, setVan] = useState(null);
   const location = useLocation();
-  // console.log(location);
+  const van = useLoaderData();
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetch(`/api/vans/${params.id}`);
-      const vanData = await data.json();
-      setVan({ ...vanData.vans });
-    }
-    fetchData();
-  }, [params]);
-  // console.log(van);
   const search = location.state?.search || "";
-  // console.log(search.split("=")[1]);
   const type = location.state?.type || "all";
 
   return (

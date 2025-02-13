@@ -8,6 +8,12 @@ body {
   padding: 0;
   background-color: #fff7ed;
   font-family: "Inter", sans-serif;
+  /* position: relative; */
+}
+
+a {
+  text-decoration: unset;
+  color: unset;
 }
 
 body::-webkit-scrollbar {
@@ -17,6 +23,12 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -46,6 +58,36 @@ header a:hover {
   text-decoration: underline;
 }
 
+header .login-icon {
+  height: 18px;
+  width: 18px;
+}
+
+header .login-link {
+  display: inline-flex;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+}
+
+main {
+  margin-bottom: 84px;
+}
+
+footer {
+  background-color: #161616;
+  color: #aaaaaa;
+  height: 74px;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  font-weight: 500;
+}
+
 .link-button {
   display: inline-block;
   text-align: center;
@@ -57,6 +99,17 @@ header a:hover {
   border-radius: 5px;
   cursor: pointer;
   transition: transform 0.1s ease-in-out;
+}
+
+.back-button {
+  display: block;
+  color: black;
+  text-decoration: none;
+  margin-left: 26px;
+}
+
+.back-button span:hover {
+  text-decoration: underline;
 }
 
 .link-button:hover {
@@ -107,12 +160,6 @@ header a:hover {
   transform: translate(1px, 1px);
 }
 
-.active-link {
-  font-weight: bold;
-  text-decoration: underline;
-  color: #161616;
-}
-
 /*** ABOUT PAGE ***/
 .about-hero-image {
   max-width: 100%;
@@ -155,7 +202,15 @@ header a:hover {
 /*** VAN PAGES ***/
 .van-list-container {
   padding-inline: 23px;
-  margin-bottom: 16px;
+}
+
+.van-list-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.van-list-filter-buttons > a {
+  margin-right: 15px;
 }
 
 .van-list {
@@ -238,7 +293,7 @@ i[class*="van-type-"] {
 }
 
 .van-detail-container {
-  padding: 27px;
+  padding-inline: 27px;
 }
 
 .van-detail-container .back-button {
@@ -289,10 +344,9 @@ i[class*="van-type-"] {
   font-size: 1.125rem;
 }
 
-/* Host page */
-
 .host-nav {
   display: flex;
+  margin-bottom: 30px;
 }
 
 .host-nav a {
@@ -308,18 +362,6 @@ i[class*="van-type-"] {
   font-weight: 600;
 }
 
-/* footer */
-footer {
-  background-color: #161616;
-  color: #aaaaaa;
-  height: 74px;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  margin-top: auto;
-  font-weight: 500;
-}
 .host-van-link-wrapper {
   color: unset;
   text-decoration: unset;
@@ -437,129 +479,58 @@ footer {
   border-radius: 5px;
 }
 
-/* Default styles (for mobile-first approach) */
-
-/* Media Queries */
-
-/* Tablet (768px and above) */
-@media (min-width: 768px) {
-  header {
-    height: 120px;
-    padding-block: 15px;
-  }
-
-  .home-container {
-    min-height: 500px;
-    padding: 60px 30px;
-  }
-
-  .home-container h1 {
-    font-size: 3rem;
-    line-height: 50px;
-  }
-
-  .van-list {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .about-page-content {
-    padding-inline: 40px;
-  }
-
-  .about-page-cta {
-    padding-inline: 40px;
-    margin-inline: 40px;
-  }
-
-  .host-vans-list,
-  .host-vans-title {
-    padding-inline: 40px;
-  }
-
-  .host-van-detail-layout-container {
-    padding: 40px;
-    margin: 40px;
-  }
-
-  .host-van-detail > img {
-    height: 200px;
-  }
-}
-
-/* Desktop (1024px and above) */
-@media (min-width: 1024px) {
-  header {
-    height: 130px;
-    padding-block: 20px;
-  }
-
-  .home-container {
-    min-height: 600px;
-    padding: 80px 50px;
-  }
-
-  .home-container h1 {
-    font-size: 3.5rem;
-    line-height: 55px;
-  }
-
-  .van-list {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .van-detail-container {
-    padding: 40px;
-  }
-
-  .about-page-content {
-    padding-inline: 60px;
-  }
-
-  .about-page-cta {
-    padding-inline: 60px;
-    margin-inline: 60px;
-  }
-
-  .host-vans-list,
-  .host-vans-title {
-    padding-inline: 60px;
-  }
-
-  .host-van-detail-layout-container {
-    padding: 50px;
-    margin: 50px;
-  }
-
-  .host-van-detail {
-    flex-direction: row;
-    gap: 30px;
-  }
-
-  .host-van-detail > img {
-    height: 250px;
-  }
-
-  .host-van-detail-info-text h3 {
-    font-size: 30px;
-  }
-
-  .host-van-detail-info-text h4 {
-    font-size: 22px;
-  }
-
-  .host-van-detail-nav {
-    justify-content: flex-start;
-    gap: 20px;
-  }
-}
-
 .not-found-container {
   padding-inline: 26px;
-  margin-bottom: 26px;
 }
 
 .not-found-container .link-button {
   width: 100%;
   background-color: #161616;
   color: white;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 27px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.login-form > input {
+  border: 1px solid rgba(209, 213, 219);
+  height: 40px;
+  text-indent: 10px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  font-weight: 400;
+}
+
+.login-form > input:focus {
+  outline: none;
+}
+
+.login-form > input:first-of-type {
+  border-radius: 6px 6px 0px 0px;
+}
+
+.login-form > input:last-of-type {
+  border-radius: 0px 0px 6px 6px;
+  border-top: none;
+}
+
+.login-form > button {
+  background-color: #ff8c38;
+  border: none;
+  border-radius: 6px;
+  height: 55px;
+  margin-top: 22px;
+  color: white;
+  font-family: "Inter", sans-serif;
 }

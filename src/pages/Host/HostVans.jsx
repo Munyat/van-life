@@ -1,17 +1,18 @@
 import HostVansCard from "../../Components/HostVansCard";
 import { useEffect, useState } from "react";
+import { getHostVans } from "../../hooks/useVansFetch";
+import { useLoaderData } from "react-router-dom";
+import { requireAuth } from "../../utils";
+
+export async function loader() {
+  await requireAuth();
+  return getHostVans();
+}
 
 function HostVans() {
-  const [vans, setVans] = useState([]);
+  // const [vans, setVans] = useState([]);
+  const vans = useLoaderData();
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetch("/api/host/vans");
-      const vansData = await data.json();
-      setVans([...vansData.vans]);
-    }
-    fetchData();
-  }, []);
   return (
     <section>
       <h1 className="host-vans-title">Your listed vans</h1>

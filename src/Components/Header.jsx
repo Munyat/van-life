@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -25,6 +25,9 @@ function Header() {
         >
           Vans
         </NavLink>
+        <Link to="login" className="login-link">
+          <img src="/avatar-img.png" alt="Avatar" />
+        </Link>
       </nav>
     </header>
   );
