@@ -1,27 +1,23 @@
 import { useState, useEffect } from "react";
-import { useParams, Link, Outlet, useLoaderData } from "react-router-dom";
+import {
+  useParams,
+  useNavigate,
+  Link,
+  Outlet,
+  useLoaderData,
+  Navigate,
+} from "react-router-dom";
 import HostVanLayout from "../../Components/HostVanLayout";
 import { getHostVans } from "../../hooks/useVansFetch";
 import { requireAuth } from "../../utils";
 
-export async function loader({ params }) {
-  await requireAuth();
+export async function loader({ params, request }) {
+  await requireAuth(request);
   return getHostVans(params.id);
 }
 export default function HostVanDetail() {
-  // const { id } = useParams();
-  // const [currentVan, setCurrentVan] = useState(null);
   const currentVan = useLoaderData();
 
-  // useEffect(() => {
-  //   fetch(`/api/host/vans/${id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setCurrentVan(data.vans));
-  // }, []);
-
-  // if (!currentVan) {
-  //   return <h1>Loading...</h1>;
-  // }
   return (
     <section>
       <Link to=".." relative="path" className="back-button">
