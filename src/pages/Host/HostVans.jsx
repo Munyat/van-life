@@ -1,21 +1,27 @@
 import HostVansCard from "../../Components/HostVansCard";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { getHostVans } from "../../hooks/useVansFetch";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, defer, Await } from "react-router-dom";
 import { requireAuth } from "../../utils";
+import ClipLoader from "react-spinners/ClipLoader";
+
+const override = {
+  display: "block",
+  margin: "auto auto",
+  color: "red",
+};
 
 export async function loader({ request }) {
   await requireAuth(request);
-  return getHostVans();
+  return defer({ vans: getHostVans() });
 }
 
 function HostVans() {
   // const [vans, setVans] = useState([]);
-  const vans = useLoaderData();
+  const PromiseVans = useLoaderData();
 
-  return (
-    <section>
-      <h1 className="host-vans-title">Your listed vans</h1>
+  function renderHostVans(vans) {
+    return (
       <div className="host-vans-list">
         {vans ? (
           vans.length > 0 ? (
@@ -27,6 +33,15 @@ function HostVans() {
           <h2>Loading...</h2>
         )}
       </div>
+    );
+  }
+
+  return (
+    <section className="host">
+      <h1 className="host-vans-title">Your listed vans</h1>
+      <Suspense fallback={<ClipLoader cssOverride={override} />}>
+        <Await resolve={PromiseVans.vans}>{renderHostVans}</Await>
+      </Suspense>
     </section>
   );
 }

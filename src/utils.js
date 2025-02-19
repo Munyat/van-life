@@ -12,4 +12,5 @@ export async function requireAuth(request) {
     // Object.defineProperty(response, "body", { value: true });
     throw response;
   }
+  return null;
 }

@@ -28,12 +28,13 @@ body {
 
 .site-wrapper {
   min-height: 100vh;
+  justify-content: space-between;
   display: flex;
   flex-direction: column;
 }
 
 header {
-  height: 110px;
+  height: 72px;
   display: flex;
   align-items: center;
   padding-block: 10px;
@@ -74,7 +75,8 @@ nav {
 }
 
 main {
-  margin-bottom: 84px;
+  flex: 1;
+  /* margin-bottom: 84px; */
 }
 
 footer {
@@ -202,7 +204,11 @@ footer {
 
 /*** VAN PAGES ***/
 .van-list-container {
+  display: flex;
+  flex-direction: column;
   padding-inline: 23px;
+  margin-bottom: 72px;
+  flex: 1;
 }
 
 .van-list-filter-buttons {
@@ -348,6 +354,11 @@ i[class*="van-type-"] {
 .host-nav {
   display: flex;
   margin-bottom: 30px;
+}
+.host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .host-nav a {
