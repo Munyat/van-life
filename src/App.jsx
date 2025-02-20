@@ -12,7 +12,7 @@ import VanDetails, {
   loader as VanDetailsLoader,
 } from "./pages/vans/VanDetails";
 import Layout from "./Components/Layout";
-import Dashboard from "./pages/Host/Dashboard";
+import Dashboard, { loader as DashboardLoader } from "./pages/Host/Dashboard";
 import Income from "./pages/Host/Income";
 import Reviews from "./pages/Host/Reviews";
 import HostLayout from "./Components/HostLayout";
@@ -61,7 +61,7 @@ const router = createBrowserRouter(
         <Route
           index
           element={<Dashboard />}
-          loader={async ({ request }) => await requireAuth(request)} // Properly redirect unauthenticated users
+          loader={DashboardLoader} // Properly redirect unauthenticated users
           errorElement={<Error />}
         />
         <Route
