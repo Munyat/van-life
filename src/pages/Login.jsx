@@ -19,12 +19,18 @@ export default function Login() {
       {errorMessage && <h3 className="red">{errorMessage}</h3>}
 
       <Form method="post" className="login-form" replace>
-        <input name="email" type="email" placeholder="Email address" />
+        <input
+          name="email"
+          type="email"
+          placeholder="Email address"
+          value="b@b.com"
+        />
         <input
           name="password"
           type="password"
           placeholder="Password"
           autoComplete="true"
+          value="p123"
         />
         <button>{status === "submitting" ? "Logging in..." : "Log in"}</button>
       </Form>
